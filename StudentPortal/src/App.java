@@ -34,7 +34,7 @@ class Person {
 
 class Student {
     final String seatNumber;
-    final int batch;
+    final int batch = 1;
 
     public Student(String seatNumber) {
         this.seatNumber = seatNumber;
