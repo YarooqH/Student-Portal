@@ -1,6 +1,12 @@
 public class test{
     public static void main(String[] args) {
-        System.out.println("I love Java");
-        System.out.println("Object-Oriented Programming");
+        String a = "I love Java";
+        String b = "Object-Oriented Programming";
+        display(a,b);
     }
-}
+    
+    public void display(String a, String b){
+        System.out.println(a + " and " + b);
+
+    }
+}    
