@@ -33,8 +33,8 @@ class Person {
 }
 
 class Student {
-    final String seatNumber;
-    final int batch;
+    static final String seatNumber;
+    static final int batch;
 
     public Student(String seatNumber) {
         this.seatNumber = seatNumber;
