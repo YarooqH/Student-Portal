@@ -5,7 +5,7 @@ public class test{
         display(a,b);
     }
     
-    public void display(String a, String b){
+    public static void display(String a, String b){
         System.out.println(a + " and " + b);
 
     }
