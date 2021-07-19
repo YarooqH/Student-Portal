@@ -35,9 +35,10 @@ class Person {
 class Student {
     final String seatNumber;
     final int batch = 1;
-
+    int[] TotalCourses = new int[6];
+    int Semester;
+    String[] Courses = new String[10];
     public Student(String seatNumber) {
         this.seatNumber = seatNumber;
     }
-
 }
