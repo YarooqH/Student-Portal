@@ -7,9 +7,13 @@ public class App {
     }
 }
 
+// Person class
 class Person {
-    String name;
-    String role;
+    public String name;
+    public String role;
+
+    public Person(){
+    }
 
     public Person(String name, String role) {
         this.name = name;
@@ -33,10 +37,10 @@ class Person {
     }
 }
 
-class Student {
+// Student Class
+class Student extends Person{
     /** Student Attributes */
     /** Constant Attributes */
-    public final String name;
     public final String fatherName;
     public final String seatNumber;
     public final int batch;
@@ -46,15 +50,168 @@ class Student {
     public int Semester;
     public ArrayList<String> Courses;
     public ArrayList<String> CoursesPassed;
-
-
-
     /** Class Constructors */
-    public Student(String name, String fatherName, String seatNumber, int batch, int CNIC) {
+    public Student(String name,String fatherName, String seatNumber, int batch, int CNIC) {
+        super(name,"Student");
         this.seatNumber = seatNumber;
         this.batch = batch;
-        this.name = name;
         this.fatherName = fatherName;
         this.CNIC = CNIC;
+    }
+}
+// Teacher class
+class Teacher extends Person {
+    public final int TeacherID;
+    public String courseName;
+    public int numOFclasses;
+
+    public Teacher(String name, int TeacherID, String courseName, int numOFclasses){
+        super(name, "Teacher");
+        this.TeacherID = TeacherID;
+        this.courseName = courseName;
+        this.numOFclasses = numOFclasses;
+    }
+
+    public String getTeacherId() {
+        return TeacherID;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public int getnumOFclasses() {
+        return numOFclasses;
+    }
+
+}
+// Admin class
+class Admin extends Person{
+    public ArrayList<Teacher> teachers = new ArrayList<>();
+    public ArrayList<Student> students = new ArrayList<>();
+    public ArrayList<String> courses = new ArrayList<>();
+
+    public Admin(String name) {
+        super(name, "Admin");
+    }
+
+    public  ArrayList<> getTeachers(){
+        return teachers;
+    }
+
+    public  ArrayList<> getStudents(){
+        return students;
+    }
+
+    public  ArrayList<> getCourses(){
+        return courses;
+    }
+
+    public void addCourse(Course course){
+        courses.add(course);
+    }
+
+    public void addStudent(Student student){
+        students.add(student);
+    }
+
+    public void addTeacher(Teacher teacher){
+        teachers.add(teacher);
+    }
+
+    public void removeTeacher(int TeacherID){
+        for (Teacher x:teachers){
+            if (x.TeacherID == TeacherID){
+                teachers.remove(x);
+            }
+        }
+    }
+
+    public void removeStudent(int StudentID){
+        for (Student x:teachers){
+            if (x.seatNumber == StudentID){
+                students.remove(x);
+            }
+        }
+    }
+}
+
+
+class Course {
+    public String courseID;
+    public String courseName;
+    public Teacher courseInstructor;
+    public ArrayList<Student> studentList =  new ArrayList<>();
+
+    public Course(){}
+
+    public Course(String courseName,String courseID, Teacher courseInstructor){
+        this.courseName = courseName;
+        this.courseID = courseID;
+        this.courseInstructor = courseInstructor;
+    }
+
+    public void addStudent(Student std){
+        studentList.add(std);
+    }
+
+    public void setCourseName(String name){
+        courseName = name;
+    }
+
+    public void setCourseID(String id){
+        courseID = id;
+    }
+
+    public void setCourseInstructor(String insName){
+        courseInstructor = insName;
+    }
+}
+
+
+class Fee {
+    private double tuitionFee;
+    private double examinationFee;
+    private double totalFee;
+    private boolean feePaid;
+    private double feeDue;
+
+    public Fee(){}
+    public Fee(double tuitionFee, double examinationFee){
+        this.tuitionFee = tuitionFee;
+        this.examinationFee = examinationFee;
+        totalFee = tuitionFee + examinationFee;
+    }
+
+    public boolean getFeeClear(){
+        return feePaid;
+    }
+    
+    public double getFeeDue(){
+        return feeDue;
+    }
+
+    public double getTuitionFee(){
+        return tuitionFee;
+    }
+
+    public double getExaminationFee(){
+        return examinationFee;
+    }
+
+    public double getTotalFee(){
+        return totalFee;
+    }
+
+    public void setTuitionFee(double fee){
+        tuitionFee = fee;
+    }
+
+    public void setExaminationFee(double fee){
+        examinationFee = fee;
+    }
+
+    public void setFeePaid(boolean x){
+        feePaid = x;
     }
 }
