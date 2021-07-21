@@ -1,4 +1,5 @@
 package StudentPortal.src;
+import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -33,12 +34,27 @@ class Person {
 }
 
 class Student {
-    final String seatNumber;
-    final int batch = 1;
-    int[] TotalCourses = new int[6];
-    int Semester;
-    String[] Courses = new String[10];
-    public Student(String seatNumber) {
+    /** Student Attributes */
+    /** Constant Attributes */
+    public final String name;
+    public final String fatherName;
+    public final String seatNumber;
+    public final int batch;
+    public final int CNIC;
+    /** Variable Attributes */
+    public int TotalCourses;
+    public int Semester;
+    public ArrayList<String> Courses;
+    public ArrayList<String> CoursesPassed;
+
+
+
+    /** Class Constructors */
+    public Student(String name, String fatherName, String seatNumber, int batch, int CNIC) {
         this.seatNumber = seatNumber;
+        this.batch = batch;
+        this.name = name;
+        this.fatherName = fatherName;
+        this.CNIC = CNIC;
     }
 }
