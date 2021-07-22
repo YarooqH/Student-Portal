@@ -215,3 +215,53 @@ class Fee {
         feePaid = x;
     }
 }
+
+class Marksheet {
+    private String courseName;
+    private String studentName;
+    private int studentSeatNum;
+    private int totalMarks;
+    private int examMarks;
+    private int assignmentMarks;
+    private int labMarks;
+    private boolean labPass;
+    private boolean theoryPass;
+    private char grade;
+    private double GPA;
+
+
+    public Marksheet(){}
+    public Marksheet(String courseName, String studentName, String studentSeatNum){
+        this.courseName = courseName;
+        this.studentName = studentName;
+        this.studentSeatNum = studentSeatNum;
+    }
+
+    public String getCourseName(){
+        return courseName;
+    }
+
+    public String getStudentName(){
+        return studentName;
+    }
+
+    public int getStudentSeatNum(){
+        return studentSeatNum;
+    }
+
+    public int getExamMarks(){
+        return examMarks;
+    }
+
+    public int getLabMarks(){
+        return labMarks;
+    }
+
+    public int getAssignmentMarks(){
+        return assignmentMarks;
+    }
+
+    public void setTuitionFee(double fee){
+        tuitionFee = fee;
+    }
+}
