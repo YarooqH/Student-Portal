@@ -196,7 +196,6 @@ class Undergraduate extends Student {
 
     public Undergraduate(String name, String fatherName, String seatNumber, int TotalCourses, int batch, int CNIC) {
         super(name, fatherName, seatNumber, TotalCourses, batch, CNIC);
-        // TODO Auto-generated constructor stub
     }
 
 }
