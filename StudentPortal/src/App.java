@@ -10,15 +10,15 @@ public class App {
 
 // Person class
 class Person {
-    public String name;
+    public final String name;
     public String role;
-
-    public Person() {
-    }
-
-    public Person(String name, String role) {
+    public final String CNIC;
+    public String email;
+    
+    public Person(String name, String role, String CNIC) {
         this.name = name;
         this.role = role;
+        this.CNIC = CNIC;
     }
 
     public String getName() {
@@ -29,12 +29,16 @@ class Person {
         return role;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getCNIC() {
+        return CNIC;
     }
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public void addEmail(String email){
+        this.email = email;
     }
 }
 
@@ -42,103 +46,174 @@ class Person {
 class Student extends Person {
     /** Student Attributes */
     /** Constant Attributes */
-
     public final String fatherName;
     public final String seatNumber;
     public final int batch;
-    public final int CNIC;
+
     /** Variable Attributes */
-
-    public final int TotalCourses;
+    public int totalCourses;
     public int Semester;
-    public ArrayList<String> Courses;
-    public ArrayList<String> CoursesPassed;
+    public ArrayList<Course> Courses;
+    public ArrayList<Course> CoursesPassed;
+    public ArrayList<Fee> fee;
+    public Marksheet semesterMarksheet;
+    // public Marksheet commulativeMarksheet;
 
-    /** Class Constructors */
-
-    public Student(String name, String fatherName, String seatNumber, int TotalCourses, int batch, int CNIC) {
-        super(name, "Student");
+    /** Class Constructor */
+    public Student(String name, String fatherName, String seatNumber, int batch, String CNIC) {
+        super(name,"Student",CNIC);
         this.seatNumber = seatNumber;
         this.batch = batch;
         this.fatherName = fatherName;
-        this.CNIC = CNIC;
-        this.TotalCourses = TotalCourses;
     }
 
     public String getFatherName() {
-        return this.fatherName;
+        return fatherName;
     }
 
     public String getSeatNumber() {
-        return this.seatNumber;
+        return seatNumber;
     }
 
     public int getBatch() {
-        return this.batch;
+        return batch;
     }
 
-    public int getCNIC() {
-        return this.CNIC;
+    public String getCNIC() {
+        return CNIC;
     }
 
     public int getTotalCourses() {
-        return this.TotalCourses;
+        return totalCourses;
     }
 
     public int getSemester() {
-        return this.Semester;
+        return Semester;
+    }
+
+    public ArrayList<Course> getCoursesPassed() {
+        return CoursesPassed;
+    }
+
+    public ArrayList<Course> getCourses() {
+        return this.Courses;
     }
 
     public void setSemester(int Semester) {
         this.Semester = Semester;
     }
 
-    public ArrayList<String> getCourses() {
-        return this.Courses;
+    public void addCourse(Course course) {
+        Courses.add(course);
+        totalCourses++;
     }
 
-    public void setCourses(ArrayList<String> Courses) {
-        this.Courses = Courses;
+    public void setCoursePassed(Course course) {
+        CoursesPassed.add(course);
+    }
+}
+/** For undergrad Students */
+class Undergraduate extends Student {
+    public String department; 
+    public Undergraduate(String name, String fatherName, String seatNumber, int batch, String CNIC, String department) {
+        super(name, fatherName, seatNumber, batch, CNIC);
+        this.department = department;
+        fee = new ArrayList<>();
+        semesterMarksheet = new Marksheet();
     }
 
-    public ArrayList<String> getCoursesPassed() {
-        return this.CoursesPassed;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setCoursesPassed(ArrayList<String> CoursesPassed) {
-        this.CoursesPassed = CoursesPassed;
+    public void setDepartment(String department){
+        this.department = department;
+    }
+}
+
+/**For post_grad students */
+class Postgraduate extends Student {
+    public String major;
+
+    public Postgraduate(String name, String fatherName, String seatNumber, int batch, String CNIC, String major) {
+        super(name, fatherName, seatNumber, batch, CNIC);
+        this.major = major;
+        fee = new ArrayList<>();
+        semesterMarksheet = new Marksheet();
     }
 
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
 }
 
 // Teacher class
 class Teacher extends Person {
     public final String TeacherID;
-    private ArrayList<String> qualifications;
-    public String courseName;
+    private ArrayList<String> qualifications = new ArrayList<>();
+    public  ArrayList<Student> students;
+    public Course course;
     public int numOfClasses;
 
-    public Teacher(String name, String TeacherID, String courseName, int numOfClasses,
-            ArrayList<String> qualifications) {
-        super(name, "Teacher");
-        this.qualifications = qualifications;
+    public Teacher(String name, String TeacherID, Course course, int numOfClasses, String CNIC) {
+        super(name,"Teacher",CNIC);
         this.TeacherID = TeacherID;
-        this.courseName = courseName;
+        this.course = course;
         this.numOfClasses = numOfClasses;
     }
 
-    public String getTeacherId() {
-        return TeacherID;
+    public String getTeacherID() {
+        return this.TeacherID;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public ArrayList<String> getQualifications() {
+        return this.qualifications;
     }
 
-    public int getnumOfClasses() {
-        return numOfClasses;
+    public ArrayList<Student> getStudents() {
+        return this.students;
     }
 
+    public void setStudents(ArrayList<Student> students) {
+        this.students = students;
+    }
+
+    public Course getCourse() {
+        return this.course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public int getNumOfClasses() {
+        return this.numOfClasses;
+    }
+
+    public void setNumOfClasses(int numOfClasses) {
+        this.numOfClasses = numOfClasses;
+    }
+
+
+    public void addQualification(String qualification){
+        qualifications.add(qualification);
+    }
+    
+}
+class Lecturer extends Teacher {
+    public Lecturer(String name, String TeacherID, Course course, int numOfClasses,String CNIC) {
+        super(name, TeacherID, course, numOfClasses, CNIC);
+    }
+}
+
+class AssistantProfessor extends Teacher {
+    public AssistantProfessor(String name, String TeacherID, Course course, int numOfClasses,String CNIC) {
+        super(name, TeacherID, course, numOfClasses, CNIC);
+    }
 }
 
 // Admin class
@@ -147,8 +222,8 @@ class Admin extends Person {
     public ArrayList<Student> students = new ArrayList<Student>();
     public ArrayList<Course> courses = new ArrayList<Course>();
 
-    public Admin(String name) {
-        super(name, "Admin");
+    public Admin(String name, String CNIC) {
+        super(name,"Admin",CNIC);
     }
 
     public ArrayList<Teacher> getTeachers() {
@@ -192,75 +267,85 @@ class Admin extends Person {
     }
 }
 
-class Undergraduate extends Student {
 
-    public Undergraduate(String name, String fatherName, String seatNumber, int TotalCourses, int batch, int CNIC) {
-        super(name, fatherName, seatNumber, TotalCourses, batch, CNIC);
-        // TODO Auto-generated constructor stub
-    }
-
-}
-
-class Postgraduate extends Student {
-    public String major;
-
-    public Postgraduate(String name, String fatherName, String seatNumber, String major, int TotalCourses, int batch,
-            int CNIC) {
-        super(name, fatherName, seatNumber, TotalCourses, batch, CNIC);
-        this.major = major;
-    }
-
-}
-
-class Lecturer extends Teacher {
-
-    public Lecturer(String name, String TeacherID, String courseName, int numOfClasses,
-            ArrayList<String> qualifications) {
-        super(name, TeacherID, courseName, numOfClasses, qualifications);
-        // TODO Auto-generated constructor stub
-    }
-
-}
-
-class AssistantLecturer extends Teacher {
-
-    public AssistantLecturer(String name, String TeacherID, String courseName, int numOfClasses,
-            ArrayList<String> qualifications) {
-        super(name, TeacherID, courseName, numOfClasses, qualifications);
-        // TODO Auto-generated constructor stub
-    }
-
-}
 
 class Course {
     public String courseID;
     public String courseName;
     public Teacher courseInstructor;
     public ArrayList<Student> studentList = new ArrayList<>();
+    public int theoryMarks;
+    public int assignmentMarks;
+    public int labMarks;
+    public Marksheet marksheet;
 
-    public Course() {
-    }
-
+    public Course() {}
+    
     public Course(String courseName, String courseID, Teacher courseInstructor) {
         this.courseName = courseName;
         this.courseID = courseID;
         this.courseInstructor = courseInstructor;
     }
-
+    
     public void addStudent(Student std) {
         studentList.add(std);
+    }
+    
+    public void setAssignmentMarks(int assignmentMarks) {
+        this.assignmentMarks = assignmentMarks;
+    }
+    
+    public void setLabMarks(int labMarks) {
+        this.labMarks = labMarks;
+    }
+    
+    public void setCourseInstructor(Teacher insName) {
+        courseInstructor = insName;
     }
 
     public void setCourseName(String name) {
         courseName = name;
     }
-
+    
     public void setCourseID(String id) {
         courseID = id;
     }
+    
+    
+    public void setTheoryMarks(int theoryMarks) {
+        this.theoryMarks = theoryMarks;
+    }
+    
+    public void setStudentList(ArrayList<Student> studentList) {
+        this.studentList = studentList;
+    }
+    
+    public String getCourseName() {
+        return courseName;
+    }
+    
+    public String getCourseID() {
+        return courseID;
+    }
 
-    public void setCourseInstructor(Teacher insName) {
-        courseInstructor = insName;
+    public Teacher getCourseInstructor() {
+        return courseInstructor;
+    }
+
+    public ArrayList<Student> getStudentList() {
+        return studentList;
+    }
+    
+    public int getLabMarks() {
+        return labMarks;
+    }
+
+    public int getTheoryMarks() {
+        return theoryMarks;
+    }
+
+    public int getAssignmentMarks() {
+        return assignmentMarks;
     }
 }
 
@@ -271,8 +356,7 @@ class Fee {
     private boolean feePaid;
     private double feeDue;
 
-    public Fee() {
-    }
+    public Fee() {}
 
     public Fee(double tuitionFee, double examinationFee) {
         this.tuitionFee = tuitionFee;
@@ -317,18 +401,14 @@ class Marksheet {
     private String courseName;
     private String studentName;
     private String studentSeatNum;
-    private int totalMarks;
-    private int examMarks;
-    private int assignmentMarks;
-    private int labMarks;
-    private boolean labPass;
-    private boolean theoryPass;
-    private char grade;
-    private double GPA;
-    double tuitionFee;
+    private int totalMarks = 100;
+    public boolean labPass;
+    public boolean theoryPass;
+    public char grade;
+    public double GPA;
+    
 
-    public Marksheet() {
-    }
+    public Marksheet() {}
 
     public Marksheet(String courseName, String studentName, String studentSeatNum) {
         this.courseName = courseName;
@@ -336,15 +416,10 @@ class Marksheet {
         this.studentSeatNum = studentSeatNum;
     }
 
-    public Marksheet(String courseName, String studentName, String studentSeatNum, int totalMarks, int examMarks,
-            int assignmentMarks, int labMarks, boolean labPass, boolean theoryPass, char grade, double GPA) {
+    public Marksheet(String courseName, String studentName, String studentSeatNum, boolean labPass, boolean theoryPass, char grade, double GPA) {
         this.courseName = courseName;
         this.studentName = studentName;
         this.studentSeatNum = studentSeatNum;
-        this.totalMarks = totalMarks;
-        this.examMarks = examMarks;
-        this.assignmentMarks = assignmentMarks;
-        this.labMarks = labMarks;
         this.labPass = labPass;
         this.theoryPass = theoryPass;
         this.grade = grade;
@@ -381,30 +456,6 @@ class Marksheet {
 
     public void setTotalMarks(int totalMarks) {
         this.totalMarks = totalMarks;
-    }
-
-    public int getExamMarks() {
-        return this.examMarks;
-    }
-
-    public void setExamMarks(int examMarks) {
-        this.examMarks = examMarks;
-    }
-
-    public int getAssignmentMarks() {
-        return this.assignmentMarks;
-    }
-
-    public void setAssignmentMarks(int assignmentMarks) {
-        this.assignmentMarks = assignmentMarks;
-    }
-
-    public int getLabMarks() {
-        return this.labMarks;
-    }
-
-    public void setLabMarks(int labMarks) {
-        this.labMarks = labMarks;
     }
 
     public boolean isLabPass() {
@@ -446,13 +497,4 @@ class Marksheet {
     public void setGPA(double GPA) {
         this.GPA = GPA;
     }
-
-    public double getTuitionFee() {
-        return this.tuitionFee;
-    }
-
-    public void setTuitionFee(double tuitionFee) {
-        this.tuitionFee = tuitionFee;
-    }
-
 }
