@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="500.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="500.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentPortal.src.controllers.LoginSignup">
    <children>
       <ImageView fitHeight="500.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -20,7 +20,7 @@
             <Image url="@../icons/menu-card.png" />
          </image>
       </ImageView>
-      <Button alignment="CENTER" layoutX="188.0" layoutY="96.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="52.0" style="-fx-background-color: transparent;">
+      <Button fx:id="backBtnSignupSuccess" alignment="CENTER" layoutX="188.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="26.0" prefWidth="52.0" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -47,7 +47,7 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="301.0" layoutY="297.0" opacity="0.69" prefHeight="119.0" prefWidth="399.0" style="-fx-background-color: #95D93E;" text="You will be notified when the account gets verified by the admin!" textAlignment="CENTER" wrapText="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="301.0" layoutY="296.0" opacity="0.69" prefHeight="119.0" prefWidth="399.0" style="-fx-background-color: #95D93E;" text="You will be notified when the account gets verified by the admin!" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>

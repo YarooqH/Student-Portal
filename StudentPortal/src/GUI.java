@@ -5,16 +5,22 @@ import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 public class GUI extends Application {
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("./fxml/LoginForm-Admin.fxml"));
+    public void start(Stage parentStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("./fxml/Login-Signup.fxml"));
+        parentStage.setTitle("UBIT Student Portal");
+
+        parentStage.getIcons().add(new Image("/StudentPortal/src/icons/icon.png"));
 
         Scene scene = new Scene(root);
 
-        stage.setScene(scene);
-        stage.show();
+        scene.getStylesheets().add("/StudentPortal/src/css/styles.css");
+
+        parentStage.setScene(scene);
+        parentStage.show();
     }
 
     /**

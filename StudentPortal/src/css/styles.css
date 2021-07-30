@@ -1,7 +1,15 @@
-.green-btn {
-    -fx-background-color: #5d8635;
-    -fx-background-radius: 9px;
-    -fx-opacity: 0.69%;
-    -fx-text-fill: black;
-    -fx-font: 20px Bold "Montserrat";
+.btn {
+    -fx-background-color: white;
+}
+
+.btn:hover {
+    -fx-background-color:  #6b9c39;
+}
+
+.field {
+    -fx-padding: 4px;
+    -fx-background-color: white;
+    -fx-background-radius: 3px;
+    -fx-border-color: green;
+    -fx-border-radius: 3px;
 }

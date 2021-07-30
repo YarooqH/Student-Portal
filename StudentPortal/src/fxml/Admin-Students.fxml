@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="500.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="500.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentPortal.src.controllers.Admin">
    <children>
       <ImageView fitHeight="500.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -64,7 +63,7 @@
             </Label>
             <Group>
                <children>
-                  <JFXButton alignment="BASELINE_CENTER" focusTraversable="false" graphicTextGap="10.0" prefHeight="46.0" prefWidth="256.0" style="-fx-background-color: #8DC248;" text="Dashboard">
+                  <JFXButton fx:id="adminDashboard" alignment="BASELINE_CENTER" focusTraversable="false" graphicTextGap="10.0" onAction="#changeScene" prefHeight="46.0" prefWidth="256.0" style="-fx-background-color: #8DC248;" text="Dashboard">
                      <font>
                         <Font name="Montserrat SemiBold" size="20.0" />
                      </font>
@@ -79,7 +78,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_CENTER" focusTraversable="false" graphicTextGap="15.0" layoutY="46.0" prefHeight="47.0" prefWidth="255.0" style="-fx-background-color: #8DC248;" text="Approvals">
+                  <JFXButton fx:id="adminApprovals" alignment="BASELINE_CENTER" focusTraversable="false" graphicTextGap="15.0" layoutY="46.0" onAction="#changeScene" prefHeight="47.0" prefWidth="255.0" style="-fx-background-color: #8DC248;" text="Approvals">
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -112,7 +111,7 @@
                         <Insets right="12.0" />
                      </padding>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_CENTER" focusTraversable="false" graphicTextGap="10.0" layoutY="139.0" prefHeight="47.0" prefWidth="255.0" style="-fx-background-color: #8DC248;" text="Teachers">
+                  <JFXButton fx:id="adminTeachers" alignment="BASELINE_CENTER" focusTraversable="false" graphicTextGap="10.0" layoutY="139.0" onAction="#changeScene" prefHeight="47.0" prefWidth="255.0" style="-fx-background-color: #8DC248;" text="Teachers">
                      <graphic>
                         <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -130,7 +129,7 @@
                         <Insets right="8.0" />
                      </padding>
                   </JFXButton>
-                  <JFXButton alignment="BASELINE_CENTER" focusTraversable="false" graphicTextGap="14.0" layoutY="186.0" prefHeight="47.0" prefWidth="255.0" style="-fx-background-color: #8DC248;" text="Logout">
+                  <JFXButton fx:id="adminLogout" alignment="BASELINE_CENTER" focusTraversable="false" graphicTextGap="14.0" layoutY="186.0" onAction="#changeScene" prefHeight="47.0" prefWidth="255.0" style="-fx-background-color: #8DC248;" text="Logout">
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                            <image>

@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.Group?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="500.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="500.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentPortal.src.controllers.LoginSignup">
    <children>
       <ImageView fitHeight="500.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -32,51 +31,41 @@
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <Group layoutX="322.0" layoutY="250.0">
-         <children>
-            <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="148.0" prefWidth="139.0" style="-fx-background-color: #81BF45; -fx-background-radius: 9; -fx-opacity: 0.69;" text="Login">
-               <padding>
-                  <Insets bottom="8.0" />
-               </padding>
-               <font>
-                  <Font name="Montserrat Bold" size="20.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <ImageView fitHeight="99.0" fitWidth="92.0" layoutX="23.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="loginBtn" alignment="CENTER" contentDisplay="TOP" focusTraversable="false" layoutX="329.0" layoutY="250.0" onAction="#handleButtonClicks" prefHeight="149.0" prefWidth="139.0" style="-fx-background-color: #81BF45; -fx-opacity: 0.69; -fx-border-radius: 9px; -fx-background-radius: 9px;" text="Login">
+         <graphic>
+            <ImageView fitHeight="99.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/sign-in.png" />
                </image>
             </ImageView>
-         </children>
+         </graphic>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+         <font>
+            <Font name="Montserrat Bold" size="21.0" />
+         </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </Group>
-      <Group layoutX="540.0" layoutY="250.0">
-         <children>
-            <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="148.0" prefWidth="139.0" style="-fx-background-color: #81BF45; -fx-background-radius: 9; -fx-opacity: 0.69;" text="Signup">
-               <padding>
-                  <Insets bottom="10.0" />
-               </padding>
-               <font>
-                  <Font name="Montserrat Bold" size="21.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <ImageView fitHeight="99.0" fitWidth="92.0" layoutX="23.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+      </JFXButton>
+      <JFXButton fx:id="signUpBtn" alignment="CENTER" contentDisplay="TOP" focusTraversable="false" layoutX="532.0" layoutY="250.0" onAction="#handleButtonClicks" prefHeight="149.0" prefWidth="139.0" style="-fx-background-color: #81BF45; -fx-opacity: 0.69; -fx-border-radius: 9px; -fx-background-radius: 9px;" text="Signup">
+         <graphic>
+            <ImageView fitHeight="99.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icons/add-user%201.png" />
                </image>
             </ImageView>
-         </children>
+         </graphic>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+         <font>
+            <Font name="Montserrat Bold" size="21.0" />
+         </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
-      </Group>
+      </JFXButton>
    </children>
 </AnchorPane>
