@@ -7,6 +7,9 @@ package StudentPortal.src.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.beans.Statement;
+import java.sql.*;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -199,9 +202,11 @@ public class LoginSignup implements Initializable {
             loadStage("/StudentPortal/src/fxml/Teacher-Signup.fxml", event);
         } else if (event.getSource() == backBtnSignupForm) {
             loadStage("/StudentPortal/src/fxml/Signup.fxml", event);
-        } else if (event.getSource() == createAccount) {
-            loadStage("/StudentPortal/src/fxml/Signup-Success.fxml", event);
-        } else if (event.getSource() == backBtnSignupSuccess) {
+        }
+        // else if (event.getSource() == createAccount) {
+        // loadStage("/StudentPortal/src/fxml/Signup-Success.fxml", event);
+        // }
+        else if (event.getSource() == backBtnSignupSuccess) {
             loadStage("/StudentPortal/src/fxml/Login-Signup.fxml", event);
         }
     }
@@ -239,10 +244,84 @@ public class LoginSignup implements Initializable {
 
     public void adminLogin(ActionEvent e) {
         if (adminLoginEmailAddress.getText().equals("admin") && adminLoginPassword.getText().equals("1234")) {
-            loadStage("/StudentPortal/src/fxml/Teacher-Dashboard.fxml", e);
+            loadStage("/StudentPortal/src/fxml/Admin-Dashboard.fxml", e);
         } else {
             adminLoginError.setText("Error! Email or Password do not match with our records \n Please Try Again!");
         }
+    }
+
+    public void submitStudent(ActionEvent event) throws Exception {
+
+        // Database Connectivity
+
+        Connection connectDB = null;
+        PreparedStatement prepStatDB = null;
+        ResultSet resultSetDB = null;
+
+        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+
+        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+        connectDB = DriverManager.getConnection("jdbc:ucanaccess://StudentPortal/src/database/Students.accdb");
+
+        System.out.println("Connected");
+
+        String insert = "insert into Student_Approvals(First_Name, Last_Name, Email_Address, Batch, Seat_Number, CNIC, Number_of_Courses, Password, Semester) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        prepStatDB = connectDB.prepareStatement(insert);
+
+        prepStatDB.setString(1, stdFirstName.getText());
+        prepStatDB.setString(2, stdLastName.getText());
+        prepStatDB.setString(3, stdEmailAddress.getText());
+        prepStatDB.setInt(4, Integer.parseInt(stdBatch.getText()));
+        prepStatDB.setString(5, stdSeatNum.getText());
+        prepStatDB.setString(6, stdCNIC.getText());
+        prepStatDB.setInt(7, Integer.parseInt(stdNumOfCourses.getText()));
+        prepStatDB.setString(8, stdPassword.getText());
+        prepStatDB.setInt(9, Integer.parseInt(stdSemester.getText()));
+
+        prepStatDB.executeUpdate();
+
+        System.out.println("Database Updated");
+
+        // Screen Change
+
+        loadStage("/StudentPortal/src/fxml/Signup-Success.fxml", event);
+    }
+
+    public void submitTeacher(ActionEvent event) throws Exception {
+
+        // Database Connectivity
+
+        Connection connectDB = null;
+        PreparedStatement prepStatDB = null;
+        ResultSet resultSetDB = null;
+
+        Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+        connectDB = DriverManager.getConnection("jdbc:ucanaccess://StudentPortal/src/database/Teachers.accdb");
+
+        System.out.println("Connected");
+
+        String insert = "insert into Teacher_Approvals(First_Name, Last_Name, Email_Address, Password, Teacher_ID, Post, CNIC, COE, Number_Of_Classes) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        prepStatDB = connectDB.prepareStatement(insert);
+
+        prepStatDB.setString(1, teacherFirstName.getText());
+        prepStatDB.setString(2, teacherLastName.getText());
+        prepStatDB.setString(3, teacherEmailAddress.getText());
+        prepStatDB.setString(4, teacherPassword.getText());
+        prepStatDB.setString(5, teacherID.getText());
+        prepStatDB.setString(6, teacherRole.getText());
+        prepStatDB.setString(7, teacherCNIC.getText());
+        prepStatDB.setString(8, teacherCOE.getText());
+        prepStatDB.setInt(9, Integer.parseInt(teacherNumOfClasses.getText()));
+
+        prepStatDB.executeUpdate();
+
+        System.out.println("Database Updated");
+
+        // Screen Change
+
+        loadStage("/StudentPortal/src/fxml/Signup-Success.fxml", event);
     }
 
     @FXML

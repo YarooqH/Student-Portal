@@ -79,7 +79,7 @@
       <TextField fx:id="stdCNIC" layoutX="535.0" layoutY="255.0" prefHeight="24.0" prefWidth="200.0" promptText="CNIC" style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
       <TextField fx:id="stdSemester" layoutX="535.0" layoutY="306.0" prefHeight="24.0" prefWidth="200.0" promptText="Semester" style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
       <TextField fx:id="stdNumOfCourses" layoutX="537.0" layoutY="354.0" prefHeight="24.0" prefWidth="200.0" promptText="No. of Courses in Current Semester" style="-fx-background-color: white; -fx-border-radius: 3px; -fx-border-color: green;" />
-      <JFXButton fx:id="createAccount" layoutX="423.0" layoutY="401.0" onAction="#handleButtonClicks" prefHeight="33.0" prefWidth="136.0" ripplerFill="#fffafa" style="-fx-background-color: #83C331; -fx-alignment: center;" text="Create Account" textAlignment="CENTER">
+      <JFXButton fx:id="createAccount" layoutX="423.0" layoutY="401.0" onAction="#submitStudent" prefHeight="33.0" prefWidth="136.0" ripplerFill="#fffafa" style="-fx-background-color: #83C331; -fx-alignment: center;" text="Create Account" textAlignment="CENTER">
          <font>
             <Font name="Montserrat SemiBold" size="14.0" />
          </font>
