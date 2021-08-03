@@ -13,7 +13,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import com.jfoenix.controls.JFXButton;
 
-public class Teacher implements Initializable {
+public class TeacherController implements Initializable {
 
     @FXML
     private JFXButton teacherDashboard;

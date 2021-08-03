@@ -258,12 +258,12 @@ public class LoginSignup implements Initializable {
         PreparedStatement prepStatDB = null;
         ResultSet resultSetDB = null;
 
-        System.out.println("Working Directory = " + System.getProperty("user.dir"));
-
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         connectDB = DriverManager.getConnection("jdbc:ucanaccess://StudentPortal/src/database/Students.accdb");
 
         System.out.println("Connected");
+
+        // Inserting Data into the Database
 
         String insert = "insert into Student_Approvals(First_Name, Last_Name, Email_Address, Batch, Seat_Number, CNIC, Number_of_Courses, Password, Semester) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -300,6 +300,8 @@ public class LoginSignup implements Initializable {
         connectDB = DriverManager.getConnection("jdbc:ucanaccess://StudentPortal/src/database/Teachers.accdb");
 
         System.out.println("Connected");
+
+        // Inserting Data into the Database
 
         String insert = "insert into Teacher_Approvals(First_Name, Last_Name, Email_Address, Password, Teacher_ID, Post, CNIC, COE, Number_Of_Classes) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 

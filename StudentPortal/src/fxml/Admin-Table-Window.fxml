@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="897.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentPortal.src.controllers.WindowController">
+   <children>
+      <TabPane prefHeight="518.0" prefWidth="897.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Student">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="757.0">
+                     <children>
+                        <TableView fx:id="studentTable" prefHeight="393.0" prefWidth="897.0">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <JFXButton alignment="CENTER" contentDisplay="TOP" layoutX="361.0" layoutY="402.0" onAction="#acceptStdAccountBtn" text="Accept">
+                           <graphic>
+                              <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/akar-icons_check.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton alignment="CENTER" contentDisplay="TOP" layoutX="470.0" layoutY="402.0" text="Decline">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="77.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/akar-icons_cross.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Teacher">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="757.0">
+                     <children>
+                        <TableView fx:id="teacherTable" prefHeight="393.0" prefWidth="897.0">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <JFXButton alignment="CENTER" contentDisplay="TOP" layoutX="361.0" layoutY="402.0" onAction="#acceptTeacherAccountBtn" text="Accept">
+                           <graphic>
+                              <ImageView fitHeight="52.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/akar-icons_check.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton alignment="CENTER" contentDisplay="TOP" layoutX="470.0" layoutY="402.0" text="Decline">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="77.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/akar-icons_cross.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
