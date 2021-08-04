@@ -6,25 +6,18 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "vmArgs": "--module-path D:\\JavaFX\\javafx-sdk-16\\lib --add-modules javafx.controls,javafx.fxml",
-            "mainClass": "StudentPortal.src.App",
-            "projectName": "Student-Portal_41c9a341"
-        },
-        {
-            "type": "java",
             "name": "Launch GUI",
             "request": "launch",
-            "vmArgs": "--module-path D:\\JavaFX\\javafx-sdk-16\\lib --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path C:\\Users\\hanan\\Downloads\\Compressed\\javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "StudentPortal.src.GUI",
-            "projectName": "Student-Portal_41c9a341"
+            "projectName": "JavaPrograms_dd3c87b0"
+        },
+        {
+            "type": "pwa-msedge",
+            "request": "launch",
+            "name": "Launch Edge against localhost",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
         }
     ]
 }

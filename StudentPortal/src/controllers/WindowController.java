@@ -2,6 +2,7 @@ package StudentPortal.src.controllers;
 
 import java.net.URL;
 import java.sql.*;
+import StudentPortal.src.model.*;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -11,22 +12,21 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
+// import javafx.scene.control.Button;
+// import javafx.scene.control.ComboBox;
+// import javafx.scene.control.DatePicker;
+// import javafx.scene.control.Label;
+// import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+// import javafx.scene.control.TableView;
+// import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
 
 import StudentPortal.src.controllers.AdminController;
-import StudentPortal.src.App;
-
 public class WindowController implements Initializable {
     @FXML
     private TableView studentTable;
@@ -121,14 +121,16 @@ public class WindowController implements Initializable {
             String firstName = userData[0].replace("[", "");
             String lastName = userData[1];
             String email = userData[2];
+            String batch = userData[6];
             String seatNum = userData[3];
             String CNIC = userData[4];
             String password = userData[5];
-            String batch = userData[6];
             String courses = userData[7];
             String semester = userData[8].replace("]", "");
 
-            // Make Object HERE
+            // Model Object is made here (could be student or teacher)
+            Student std = new Student(firstName,lastName,seatNum,batch,CNIC,email);
+            
 
             // for (String s : userData) {
             // System.out.println(s);
