@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="337.0" spacing="30.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXButton fx:id="stdNotificationText" alignment="BASELINE_LEFT" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="337.0" style="-fx-background-color: #8DC248;" text=" From">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <padding>
+            <Insets left="60.0" />
+         </padding>
+         <graphic>
+            <Label fx:id="stdNotificationLabel" alignment="TOP_CENTER" prefHeight="21.0" prefWidth="194.0" text="Description">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <padding>
+                  <Insets left="110.0" />
+               </padding>
+            </Label>
+         </graphic>
+      </JFXButton>
+   </children>
+</HBox>

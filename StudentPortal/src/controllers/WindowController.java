@@ -8,20 +8,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.util.Callback;
 
 import StudentPortal.src.controllers.AdminController;
@@ -141,10 +132,34 @@ public class WindowController implements Initializable {
             prepStatDB = connectDB.prepareStatement(query);
             prepStatDB.executeUpdate();
 
+            // Email Functionality
+
             // preparedStatement = connection.prepareStatement(query);
             // preparedStatement.execute();
             // WindowController(fileLocation);
 
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+    }
+
+    private void declineAccount(TableView table, String DBTableName, String fileLocation, String sql) {
+        try {
+            queryId = (table.getSelectionModel().getSelectedItem());
+            int i = 0;
+            for (String string : userData) {
+                userData[i] = string.strip();
+                i++;
+            }
+            String email = userData[2];
+            query = "DELETE FROM `" + DBTableName + "` WHERE Email_Address = " + "'" + email + "'";
+            System.out.println(query);
+
+            WindowController(fileLocation);
+            prepStatDB = connectDB.prepareStatement(query);
+            prepStatDB.executeUpdate();
+
+            // Email Functionality
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
@@ -168,6 +183,21 @@ public class WindowController implements Initializable {
         // fetCol(teacherTable, SQLTeacher);
         // fetRow(teacherTable, SQLTeacher);
         // System.out.println("Henlo");
+    }
+
+    // Need to add
+    @FXML
+    void declineStdAccountBtn(ActionEvent event) {
+        declineAccount(studentTable, "Student_Approvals", studentDBLocation, SQLStudent);
+        AdminController ad = new AdminController();
+        ad.loadStage("/StudentPortal/src/fxml/Admin-Table-Window.fxml", event);
+    }
+
+    @FXML
+    void declineTeacherAccountBtn(ActionEvent event) {
+        declineAccount(teacherTable, "Teacher_Approvals", teacherDBLocation, SQLTeacher);
+        AdminController ad = new AdminController();
+        ad.loadStage("/StudentPortal/src/fxml/Admin-Table-Window.fxml", event);
     }
 
     @Override

@@ -16,15 +16,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-
-// import StudentPortal.src.Person;
-// import StudentPortal.src.model.StudentModel;
 import com.jfoenix.controls.JFXButton;
+
+import StudentPortal.src.controllers.WindowController;
 
 public class AdminController implements Initializable {
     @FXML
@@ -41,6 +43,20 @@ public class AdminController implements Initializable {
 
     @FXML
     private JFXButton adminLogout;
+
+    // Notifications
+
+    @FXML
+    private TextField adminNotificationMsg;
+
+    @FXML
+    private JFXButton adminNotificationSendBtn;
+
+    @FXML
+    private Label adminNotificationStatus;
+
+    @FXML
+    private JFXButton adminNotificationsAdd;
 
     Connection connectDB;
     PreparedStatement prepStatDB;
@@ -68,6 +84,44 @@ public class AdminController implements Initializable {
             loadStage("/StudentPortal/src/fxml/Admin-Teachers.fxml", event);
         } else if (event.getSource() == adminLogout) {
             loadStage("/StudentPortal/src/fxml/Login-Signup.fxml", event);
+        } else if (event.getSource() == adminNotificationsAdd) {
+            loadWindow("/StudentPortal/src/fxml/Admin-Notifications-Window.fxml");
+        }
+    }
+
+    @FXML
+    void sendNotification(ActionEvent event) {
+        try {
+            String notification;
+            notification = adminNotificationMsg.getText();
+
+            Connection connectDB = null;
+            PreparedStatement prepStatDB;
+
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+
+            connectDB = DriverManager.getConnection("jdbc:ucanaccess://StudentPortal/src/database/Notifications.accdb");
+
+            String SQL = "INSERT INTO Notifications(Sent_By, Message) values (?, ?)";
+
+            prepStatDB = connectDB.prepareStatement(SQL);
+
+            prepStatDB.setString(1, "Admin");
+            prepStatDB.setString(2, notification);
+
+            if (notification.isEmpty()) {
+                adminNotificationStatus.setTextFill(Color.RED);
+                adminNotificationStatus.setText("Error! Please Enter Some Text!");
+            } else {
+                adminNotificationStatus.setTextFill(Color.GREEN);
+                adminNotificationStatus.setText("Notification Sent!");
+
+                prepStatDB.executeUpdate();
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            // TODO: handle exception
         }
     }
 

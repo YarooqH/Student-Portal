@@ -3,6 +3,9 @@ package StudentPortal.src.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.management.Notification;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,8 +13,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import com.jfoenix.controls.JFXButton;
+
+import org.apache.commons.lang3.ObjectUtils.Null;
+
+import java.sql.*;
+import java.util.ResourceBundle;
+
+import StudentPortal.src.controllers.NotificationController;
 
 public class StudentController implements Initializable {
     @FXML
@@ -29,12 +40,15 @@ public class StudentController implements Initializable {
     @FXML
     private JFXButton stdLogout;
 
+    // @FXML
+    // private VBox nodeItems = null;
+
     @FXML
     private void changeScene(ActionEvent event) {
         if (event.getSource() == stdDashboard) {
             loadStage("/StudentPortal/src/fxml/Student-Dashboard.fxml", event);
         } else if (event.getSource() == stdNotifications) {
-            loadStage("/StudentPortal/src/fxml/Student-Notifications.fxml", event);
+            loadStage("/StudentPortal/src/fxml/Student-Notifications-New.fxml", event);
         } else if (event.getSource() == stdCourses) {
             loadStage("/StudentPortal/src/fxml/Student-Courses.fxml", event);
         } else if (event.getSource() == stdGrades) {

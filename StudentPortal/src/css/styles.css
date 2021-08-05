@@ -35,3 +35,23 @@
     -fx-background-color: white;
 }
 
+.notification-from {
+    -fx-pref-width: 337;
+    -fx-pref-height: 20;
+    -fx-padding: 5 0 5 30;
+    -fx-background-color:#8DC248;
+    -fx-font-size: 15;
+    -fx-font-weight: bold;      
+    /* -fx-pref-height: 22; */
+    
+}
+
+.notification-label {
+    /* -fx-pref-height: 12; */
+    -fx-padding: 0 0 0 100;
+    -fx-pref-width: 194;   
+    -fx-allignment: baseline-left;
+    -fx-font-size: 15;
+    -fx-font-weight: normal; 
+    
+}
