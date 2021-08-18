@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentPortal.src.controllers.AdminController">
+   <children>
+      <ImageView fitHeight="241.0" fitWidth="606.0" layoutX="-4.0" layoutY="59.0" pickOnBounds="true">
+         <image>
+            <Image url="@../icons/lightgreenbkg.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="152.0" layoutY="14.0" prefHeight="53.0" prefWidth="297.0" text="Upcoming Events">
+         <font>
+            <Font name="Montserrat SemiBold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="62.0" layoutY="93.0" prefHeight="32.0" prefWidth="241.0" text="Add New Upcoming Events">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="adminEventMsg" layoutX="62.0" layoutY="125.0" prefHeight="32.0" prefWidth="343.0" promptText="Enter New Event Info">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <JFXButton fx:id="adminEventSendBtn" layoutX="253.0" layoutY="180.0" onAction="#sendEvent" prefHeight="32.0" prefWidth="101.0" style="-fx-background-color: #8DC248;" text="Send">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label fx:id="adminEventStatus" alignment="TOP_CENTER" layoutX="62.0" layoutY="214.0" prefHeight="61.0" prefWidth="495.0" wrapText="true">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="adminEventDate" layoutX="405.0" layoutY="125.0" prefHeight="32.0" prefWidth="131.0" promptText="Enter Event Date" />
+   </children>
+</AnchorPane>

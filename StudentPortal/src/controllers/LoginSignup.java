@@ -26,6 +26,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import com.jfoenix.controls.JFXButton;
 
+// import StudentPortal.src.controllers.StudentController;
+
 /**
  *
  * @author Dell
@@ -150,7 +152,7 @@ public class LoginSignup implements Initializable {
     private TextField teacherEmailAddress;
 
     @FXML
-    private TextField teacherID;
+    private TextField teacherSemester;
 
     @FXML
     private TextField teacherRole;
@@ -159,7 +161,7 @@ public class LoginSignup implements Initializable {
     private TextField teacherCNIC;
 
     @FXML
-    private TextField teacherCOE;
+    private TextField teacherCourses;
 
     @FXML
     private TextField teacherNumOfClasses;
@@ -202,11 +204,7 @@ public class LoginSignup implements Initializable {
             loadStage("/StudentPortal/src/fxml/Teacher-Signup.fxml", event);
         } else if (event.getSource() == backBtnSignupForm) {
             loadStage("/StudentPortal/src/fxml/Signup.fxml", event);
-        }
-        // else if (event.getSource() == createAccount) {
-        // loadStage("/StudentPortal/src/fxml/Signup-Success.fxml", event);
-        // }
-        else if (event.getSource() == backBtnSignupSuccess) {
+        } else if (event.getSource() == backBtnSignupSuccess) {
             loadStage("/StudentPortal/src/fxml/Login-Signup.fxml", event);
         }
     }
@@ -225,20 +223,76 @@ public class LoginSignup implements Initializable {
         }
     }
 
-    public void stdLogin(ActionEvent e) {
-        if (stdLoginEmailAddress.getText().equals("owais@uok.com") && stdLoginPassword.getText().equals("1234")) {
-            loadStage("/StudentPortal/src/fxml/Student-Dashboard.fxml", e);
-        } else {
+    Object queryId;
+    String[] userData;
+
+    Connection connectDB;
+    PreparedStatement prepStatDB;
+    ResultSet resultSet = null;
+
+    private void conDB() {
+        try {
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            connectDB = DriverManager.getConnection("jdbc:ucanaccess://StudentPortal/src/database/MainDB.accdb");
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+    }
+
+    @FXML
+    private void logInStd(ActionEvent e) {
+        String email = stdLoginEmailAddress.getText();
+        String password = stdLoginPassword.getText();
+        if (email.isEmpty() || password.isEmpty()) {
             stdLoginError.setText("Error! Email or Password do not match with our records \n Please Try Again!");
+        } else {
+            conDB();
+            // query
+            String sql = "SELECT * FROM Students Where Email_Address = ? and Password = ?";
+            try {
+                prepStatDB = connectDB.prepareStatement(sql);
+                prepStatDB.setString(1, email);
+                prepStatDB.setString(2, password);
+                resultSet = prepStatDB.executeQuery();
+                if (!resultSet.next()) {
+                    stdLoginError
+                            .setText("Error! Email or Password do not match with our records \n Please Try Again!");
+                } else {
+                    StudentController.getStudentEmail(email);
+                    loadStage("/StudentPortal/src/fxml/Student-Dashboard.fxml", e);
+                }
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+            }
         }
     }
 
-    public void teacherLogin(ActionEvent e) {
-        if (teacherLoginEmailAddress.getText().equals("owais@uok.com")
-                && teacherLoginPassword.getText().equals("1234")) {
-            loadStage("/StudentPortal/src/fxml/Teacher-Dashboard.fxml", e);
-        } else {
+    @FXML
+    private void logInTeacher(ActionEvent e) {
+        String email = teacherLoginEmailAddress.getText();
+        String password = teacherLoginPassword.getText();
+        if (email.isEmpty() || password.isEmpty()) {
             teacherLoginError.setText("Error! Email or Password do not match with our records \n Please Try Again!");
+        } else {
+            conDB();
+            // query
+            String sql = "SELECT * FROM Teachers Where Email_Address = ? and Password = ?";
+            try {
+                prepStatDB = connectDB.prepareStatement(sql);
+                prepStatDB.setString(1, email);
+                prepStatDB.setString(2, password);
+                resultSet = prepStatDB.executeQuery();
+                if (!resultSet.next()) {
+                    teacherLoginError
+                            .setText("Error! Email or Password do not match with our records \n Please Try Again!");
+                } else {
+                    TeacherController.getTeacherEmail(email);
+                    loadStage("/StudentPortal/src/fxml/Teacher-Dashboard.fxml", e);
+                }
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+            }
         }
     }
 
@@ -253,10 +307,6 @@ public class LoginSignup implements Initializable {
     public void submitStudent(ActionEvent event) throws Exception {
 
         // Database Connectivity
-
-        Connection connectDB = null;
-        PreparedStatement prepStatDB = null;
-        ResultSet resultSetDB = null;
 
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         connectDB = DriverManager.getConnection("jdbc:ucanaccess://StudentPortal/src/database/Students.accdb");
@@ -289,12 +339,7 @@ public class LoginSignup implements Initializable {
     }
 
     public void submitTeacher(ActionEvent event) throws Exception {
-
         // Database Connectivity
-
-        Connection connectDB = null;
-        PreparedStatement prepStatDB = null;
-        ResultSet resultSetDB = null;
 
         Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         connectDB = DriverManager.getConnection("jdbc:ucanaccess://StudentPortal/src/database/Teachers.accdb");
@@ -303,7 +348,7 @@ public class LoginSignup implements Initializable {
 
         // Inserting Data into the Database
 
-        String insert = "insert into Teacher_Approvals(First_Name, Last_Name, Email_Address, Password, Teacher_ID, Post, CNIC, COE, Number_Of_Classes) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String insert = "insert into Teacher_Approvals(First_Name, Last_Name, Email_Address, Password, Semesters, Post, CNIC, Courses, Number_Of_Classes) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         prepStatDB = connectDB.prepareStatement(insert);
 
@@ -311,10 +356,10 @@ public class LoginSignup implements Initializable {
         prepStatDB.setString(2, teacherLastName.getText());
         prepStatDB.setString(3, teacherEmailAddress.getText());
         prepStatDB.setString(4, teacherPassword.getText());
-        prepStatDB.setString(5, teacherID.getText());
+        prepStatDB.setString(5, teacherSemester.getText());
         prepStatDB.setString(6, teacherRole.getText());
         prepStatDB.setString(7, teacherCNIC.getText());
-        prepStatDB.setString(8, teacherCOE.getText());
+        prepStatDB.setString(8, teacherCourses.getText());
         prepStatDB.setInt(9, Integer.parseInt(teacherNumOfClasses.getText()));
 
         prepStatDB.executeUpdate();
@@ -324,16 +369,6 @@ public class LoginSignup implements Initializable {
         // Screen Change
 
         loadStage("/StudentPortal/src/fxml/Signup-Success.fxml", event);
-    }
-
-    @FXML
-    void btnHoverEffectEnd(MouseEvent event) {
-
-    }
-
-    @FXML
-    void btnHoverEffectStart(MouseEvent event) {
-
     }
 
     @Override

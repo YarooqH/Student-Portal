@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentPortal.src.controllers.StudentLectureController">
+   <children>
+      <Label layoutX="40.0" layoutY="30.0" text="LECTURES">
+         <font>
+            <Font name="Montserrat SemiBold" size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="412.0" fitWidth="833.0" layoutY="69.0" pickOnBounds="true">
+         <image>
+            <Image url="@../icons/lightgreenbkg.png" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER_LEFT" layoutX="3.0" layoutY="78.0" prefHeight="37.0" prefWidth="827.0" spacing="70.0" style="-fx-background-color: white;">
+         <children>
+            <Label text="Topic">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="20.0" text="Course Name">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Label>
+            <Label layoutX="174.0" layoutY="20.0" text="Course Number">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="-5.0" />
+               </HBox.margin>
+            </Label>
+            <Label layoutX="371.0" layoutY="15.0" text="Teacher Name">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="-20.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="40.0" />
+         </padding>
+      </HBox>
+      <ScrollPane layoutX="3.0" layoutY="121.0" prefHeight="358.0" prefWidth="827.0" stylesheets="@../css/styles.css">
+         <content>
+            <VBox fx:id="lectureContainer" alignment="TOP_CENTER" prefHeight="357.0" prefWidth="818.0" style="-fx-background-color: #d4ecb4;" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

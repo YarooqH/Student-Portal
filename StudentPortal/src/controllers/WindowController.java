@@ -16,7 +16,6 @@ import javafx.scene.control.TableView;
 import javafx.util.Callback;
 
 import StudentPortal.src.controllers.AdminController;
-import StudentPortal.src.App;
 
 public class WindowController implements Initializable {
     @FXML
@@ -24,10 +23,11 @@ public class WindowController implements Initializable {
     @FXML
     private TableView teacherTable;
 
-    Connection connectDB;
-    PreparedStatement prepStatDB;
+    static Connection connectDB;
+    static PreparedStatement prepStatDB;
+    static ResultSet rs;
 
-    ObservableList<ObservableList> data;
+    static ObservableList<ObservableList> data;
     String SQLStudent = "SELECT * from Student_Approvals";
     String SQLTeacher = "SELECT * from Teacher_Approvals";
     String studentDBLocation = "jdbc:ucanaccess://StudentPortal/src/database/Students.accdb";
@@ -38,7 +38,7 @@ public class WindowController implements Initializable {
 
     String[] userData;
 
-    public void WindowController(String fileLocation) {
+    public static void WindowController(String fileLocation) {
         try {
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             connectDB = DriverManager.getConnection(fileLocation);
@@ -48,11 +48,9 @@ public class WindowController implements Initializable {
         }
     }
 
-    private void fetCol(TableView table, String sql) {
+    public static void fetCol(TableView table, String sql) {
         try {
             ResultSet resultSetDB = connectDB.createStatement().executeQuery(sql);
-
-            System.out.println("Connected");
 
             for (int i = 0; i < resultSetDB.getMetaData().getColumnCount(); i++) {
                 // We are using non property style for making dynamic table
@@ -64,11 +62,7 @@ public class WindowController implements Initializable {
                                 return new SimpleStringProperty((String) param.getValue().get(j));
                             }
                         });
-                System.out.println("Adding Columns");
                 table.getColumns().addAll(col);
-
-                System.out.println("Column [" + i + "] ");
-
             }
 
         } catch (Exception e) {
@@ -76,9 +70,8 @@ public class WindowController implements Initializable {
         }
     }
 
-    private void fetRow(TableView table, String sql) {
+    public static void fetRow(TableView table, String sql) {
         data = FXCollections.observableArrayList();
-        ResultSet rs;
         try {
             rs = connectDB.createStatement().executeQuery(sql);
 
@@ -89,7 +82,6 @@ public class WindowController implements Initializable {
                     // Iterate Column
                     row.add(rs.getString(i));
                 }
-                System.out.println("Row [1] added " + row);
                 data.add(row);
 
             }
@@ -100,36 +92,95 @@ public class WindowController implements Initializable {
         }
     }
 
-    private void acceptAccount(TableView table, String DBTableName, String fileLocation, String sql) {
+    private void acceptStdAccount(TableView table, String DBTableName, String fileLocation, String sql) {
         try {
             queryId = (table.getSelectionModel().getSelectedItem());
             userData = queryId.toString().split(",");
             int i = 0;
             for (String string : userData) {
                 userData[i] = string.strip();
+                if (string.contains("[")) {
+                    userData[i] = string.replace("[", "");
+                } else if (string.contains("]")) {
+                    string = string.replace("]", "");
+                    userData[i] = string.strip();
+                }
                 i++;
             }
-            String firstName = userData[0].replace("[", "");
-            String lastName = userData[1];
-            String email = userData[2];
-            String seatNum = userData[3];
-            String CNIC = userData[4];
-            String password = userData[5];
-            String batch = userData[6];
-            String courses = userData[7];
-            String semester = userData[8].replace("]", "");
 
-            // Make Object HERE
+            query = "DELETE FROM `" + DBTableName + "` WHERE Email_Address = " + "'" + userData[2] + "'";
 
-            // for (String s : userData) {
-            // System.out.println(s);
-            // }
-
-            query = "DELETE FROM `" + DBTableName + "` WHERE Email_Address = " + "'" + email + "'";
-            System.out.println(query);
-            // connection = DbConnect.getConnect();
             WindowController(fileLocation);
             prepStatDB = connectDB.prepareStatement(query);
+            prepStatDB.executeUpdate();
+
+            WindowController("jdbc:ucanaccess://StudentPortal/src/database/MainDB.accdb");
+            prepStatDB = connectDB.prepareStatement(
+                    "INSERT INTO Students(First_Name, Last_Name, Email_Address, Seat_Number, CNIC, Password, Batch, Number_Of_Courses, Semester) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+            prepStatDB.setString(1, userData[0]);
+            prepStatDB.setString(2, userData[1]);
+            prepStatDB.setString(3, userData[2]);
+            prepStatDB.setString(4, userData[3]);
+            prepStatDB.setString(5, userData[4]);
+            prepStatDB.setString(6, userData[5]);
+            prepStatDB.setInt(7, Integer.parseInt(userData[6]));
+            prepStatDB.setInt(8, Integer.parseInt(userData[7]));
+            prepStatDB.setInt(9, Integer.parseInt(userData[8]));
+
+            prepStatDB.executeUpdate();
+
+            // Email Functionality
+
+            // preparedStatement = connection.prepareStatement(query);
+            // preparedStatement.execute();
+            // WindowController(fileLocation);
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+    }
+
+    private void acceptTeacherAccount(TableView table, String DBTableName, String fileLocation, String sql) {
+        try {
+            queryId = (table.getSelectionModel().getSelectedItem());
+            userData = queryId.toString().split(",");
+            int i = 0;
+            for (String string : userData) {
+                userData[i] = string.strip();
+                if (string.contains("[")) {
+                    userData[i] = string.replace("[", "");
+                } else if (string.contains("]")) {
+                    string = string.replace("]", "");
+                    userData[i] = string.strip();
+                }
+                i++;
+            }
+
+            for (String string : userData) {
+                System.out.println(string);
+            }
+
+            query = "DELETE FROM `" + DBTableName + "` WHERE Email_Address = " + "'" + userData[2] + "'";
+
+            WindowController(fileLocation);
+            prepStatDB = connectDB.prepareStatement(query);
+            prepStatDB.executeUpdate();
+
+            WindowController("jdbc:ucanaccess://StudentPortal/src/database/MainDB.accdb");
+            prepStatDB = connectDB.prepareStatement(
+                    "INSERT INTO Teachers(First_Name, Last_Name, Email_Address, Password, Semesters, Post, CNIC, Courses, Number_Of_Classes) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+            prepStatDB.setString(1, userData[0]);
+            prepStatDB.setString(2, userData[1]);
+            prepStatDB.setString(3, userData[2]);
+            prepStatDB.setString(4, userData[3]);
+            prepStatDB.setString(5, userData[4]);
+            prepStatDB.setString(6, userData[5]);
+            prepStatDB.setString(7, userData[6]);
+            prepStatDB.setString(8, userData[7]);
+            prepStatDB.setInt(9, Integer.parseInt(userData[8]));
+
             prepStatDB.executeUpdate();
 
             // Email Functionality
@@ -167,7 +218,7 @@ public class WindowController implements Initializable {
 
     @FXML
     void acceptStdAccountBtn(ActionEvent event) {
-        acceptAccount(studentTable, "Student_Approvals", studentDBLocation, SQLStudent);
+        acceptStdAccount(studentTable, "Student_Approvals", studentDBLocation, SQLStudent);
         AdminController ad = new AdminController();
         ad.loadStage("/StudentPortal/src/fxml/Admin-Table-Window.fxml", event);
         // fetCol(studentTable, SQLStudent);
@@ -177,7 +228,7 @@ public class WindowController implements Initializable {
 
     @FXML
     void acceptTeacherAccountBtn(ActionEvent event) {
-        acceptAccount(teacherTable, "Teacher_Approvals", teacherDBLocation, SQLTeacher);
+        acceptTeacherAccount(teacherTable, "Teacher_Approvals", teacherDBLocation, SQLTeacher);
         AdminController ad = new AdminController();
         ad.loadStage("/StudentPortal/src/fxml/Admin-Table-Window.fxml", event);
         // fetCol(teacherTable, SQLTeacher);
@@ -202,7 +253,6 @@ public class WindowController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
         WindowController(studentDBLocation);
         fetCol(studentTable, SQLStudent);
         fetRow(studentTable, SQLStudent);

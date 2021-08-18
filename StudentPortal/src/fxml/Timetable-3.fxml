@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="415.0" fitWidth="643.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../database/TimeTable-3.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

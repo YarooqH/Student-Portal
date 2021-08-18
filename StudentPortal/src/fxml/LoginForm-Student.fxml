@@ -57,12 +57,12 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="stdLoginPassword" layoutX="400.0" layoutY="260.0" prefHeight="37.0" prefWidth="202.0" promptText="Password" styleClass="field" stylesheets="@../css/styles.css">
+      <PasswordField fx:id="stdLoginPassword" layoutX="400.0" layoutY="260.0" prefHeight="37.0" prefWidth="202.0" promptText="Password" style="-fx-padding: 4px; -fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px; -fx-background-radius: 3px;">
          <font>
             <Font size="16.0" />
          </font>
       </PasswordField>
-      <JFXButton alignment="TOP_CENTER" defaultButton="true" layoutX="400.0" layoutY="326.0" onAction="#stdLogin" prefHeight="33.0" prefWidth="202.0" ripplerFill="#eeeeee" style="-fx-background-color: #83C331;" text="Login">
+      <JFXButton alignment="TOP_CENTER" defaultButton="true" layoutX="400.0" layoutY="326.0" onAction="#logInStd" prefHeight="33.0" prefWidth="202.0" ripplerFill="#eeeeee" style="-fx-background-color: #83C331;" text="Login">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

@@ -58,10 +58,12 @@
       <TextField fx:id="teacherFirstName" layoutX="240.0" layoutY="153.0" prefHeight="24.0" prefWidth="200.0" promptText="First Name" style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
       <TextField fx:id="teacherLastName" layoutX="240.0" layoutY="205.0" prefHeight="24.0" prefWidth="200.0" promptText="Last Name" style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
       <TextField fx:id="teacherEmailAddress" layoutX="240.0" layoutY="254.0" prefHeight="24.0" prefWidth="200.0" promptText="Email Address" style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
-      <TextField fx:id="teacherID" layoutX="535.0" layoutY="154.0" prefHeight="24.0" prefWidth="200.0" promptText="Teacher ID" style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
-      <TextField fx:id="teacherRole" layoutX="535.0" layoutY="206.0" prefHeight="24.0" prefWidth="200.0" promptText="Assistant Prof. / Prof." style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
-      <TextField fx:id="teacherCNIC" layoutX="535.0" layoutY="255.0" prefHeight="24.0" prefWidth="200.0" promptText="CNIC" style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
-      <TextField fx:id="teacherCOE" layoutX="535.0" layoutY="306.0" prefHeight="24.0" prefWidth="200.0" promptText="Course of Expertise" style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
+      <PasswordField fx:id="teacherPassword" layoutX="240.0" layoutY="306.0" prefHeight="24.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: white; -fx-background-radius: 3px; -fx-border-color: green; -fx-border-radius: 3px;" />
+      <PasswordField fx:id="teacherConfirmPassword" layoutX="240.0" layoutY="354.0" prefHeight="24.0" prefWidth="200.0" promptText="Confirm Password" style="-fx-background-color: white; -fx-background-radius: 3px; -fx-border-color: green; -fx-border-radius: 3px;" />
+      <TextField fx:id="teacherRole" layoutX="537.0" layoutY="153.0" prefHeight="24.0" prefWidth="200.0" promptText="Assistant Prof. / Prof." style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
+      <TextField fx:id="teacherCNIC" layoutX="537.0" layoutY="205.0" prefHeight="24.0" prefWidth="200.0" promptText="CNIC" style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
+      <TextField fx:id="teacherSemester" layoutX="537.0" layoutY="254.0" prefHeight="24.0" prefWidth="200.0" promptText="Semesters You Teach (e.g. 3, 4 )" style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
+      <TextField fx:id="teacherCourses" layoutX="537.0" layoutY="306.0" prefHeight="24.0" prefWidth="200.0" promptText="Your Courses (e.g. 301, 406)" style="-fx-background-color: white; -fx-border-color: green; -fx-border-radius: 3px;" />
       <TextField fx:id="teacherNumOfClasses" layoutX="537.0" layoutY="354.0" prefHeight="24.0" prefWidth="200.0" promptText="No. of Classes You Teach" style="-fx-background-color: white; -fx-border-radius: 3px; -fx-border-color: green;" />
       <JFXButton fx:id="createAccount" layoutX="423.0" layoutY="401.0" onAction="#submitTeacher" prefHeight="33.0" prefWidth="136.0" ripplerFill="#fffafa" style="-fx-background-color: #83C331; -fx-alignment: center;" text="Create Account" textAlignment="CENTER">
          <font>
@@ -71,7 +73,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <PasswordField fx:id="teacherPassword" layoutX="240.0" layoutY="306.0" prefHeight="24.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: white; -fx-background-radius: 3px; -fx-border-color: green; -fx-border-radius: 3px;" />
-      <PasswordField fx:id="teacherConfirmPassword" layoutX="240.0" layoutY="354.0" prefHeight="24.0" prefWidth="200.0" promptText="Confirm Password" style="-fx-background-color: white; -fx-background-radius: 3px; -fx-border-color: green; -fx-border-radius: 3px;" />
    </children>
 </AnchorPane>

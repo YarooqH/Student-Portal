@@ -188,14 +188,6 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </JFXButton>
-                        <JFXButton alignment="CENTER" prefHeight="33.0" prefWidth="62.0" style="-fx-border-color: white; -fx-background-color: #8DC248; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Edit" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
                      </children>
                      <VBox.margin>
                         <Insets />
@@ -228,15 +220,7 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="39.0" prefWidth="179.0" style="-fx-spacing: 10px;">
                      <children>
-                        <JFXButton alignment="CENTER" prefHeight="33.0" prefWidth="62.0" style="-fx-border-color: white; -fx-background-color: #8DC248; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Add" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton alignment="CENTER" prefHeight="33.0" prefWidth="62.0" style="-fx-border-color: white; -fx-background-color: #8DC248; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Edit" textFill="WHITE">
+                        <JFXButton fx:id="adminEventsAdd" alignment="CENTER" onAction="#changeScene" prefHeight="33.0" prefWidth="62.0" style="-fx-border-color: white; -fx-background-color: #8DC248; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Add" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -273,15 +257,7 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="39.0" prefWidth="179.0" style="-fx-spacing: 10px;">
                      <children>
-                        <JFXButton alignment="CENTER" prefHeight="33.0" prefWidth="62.0" style="-fx-border-color: white; -fx-background-color: #8DC248; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Add" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton alignment="CENTER" prefHeight="33.0" prefWidth="62.0" style="-fx-border-color: white; -fx-background-color: #8DC248; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Edit" textFill="WHITE">
+                        <JFXButton fx:id="adminFeeAdd" alignment="CENTER" onAction="#changeScene" prefHeight="33.0" prefWidth="62.0" style="-fx-border-color: white; -fx-background-color: #8DC248; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Add" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -318,15 +294,7 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="39.0" prefWidth="179.0" style="-fx-spacing: 10px;">
                      <children>
-                        <JFXButton alignment="CENTER" prefHeight="33.0" prefWidth="62.0" style="-fx-border-color: white; -fx-background-color: #8DC248; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Add" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton alignment="CENTER" prefHeight="33.0" prefWidth="62.0" style="-fx-border-color: white; -fx-background-color: #8DC248; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Edit" textFill="WHITE">
+                        <JFXButton fx:id="adminViewCourses" alignment="CENTER" onAction="#changeScene" prefHeight="33.0" prefWidth="62.0" style="-fx-border-color: white; -fx-background-color: #8DC248; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="View" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="500.0" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentPortal.src.controllers.TeacherController">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="1000.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/bkg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="476.0" fitWidth="974.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true">
+         <image>
+            <Image url="@../icons/Rectanglebig.png" />
+         </image>
+      </ImageView>
+      <Button alignment="CENTER" layoutX="13.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="52.0" style="-fx-background-color: transparent;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/arrow_back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="286.0" layoutY="46.0" text="TEACHER DASHBOARD">
+         <font>
+            <Font name="Montserrat SemiBold" size="30.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="405.0" fitWidth="721.0" layoutX="267.0" layoutY="83.0" pickOnBounds="true">
+         <image>
+            <Image url="@../icons/lightgreenbkg.png" />
+         </image>
+      </ImageView>
+      <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="12.0" prefHeight="476.0" prefWidth="253.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" prefHeight="244.0" prefWidth="185.0" text="User Name" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/user.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Group>
+               <children>
+                  <JFXButton focusTraversable="false" graphicTextGap="10.0" prefHeight="46.0" prefWidth="256.0" style="-fx-background-color: #ACE267;" text="Dashboard">
+                     <font>
+                        <Font name="Montserrat SemiBold" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/dashboard.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="teacherNotifications" focusTraversable="false" graphicTextGap="10.0" layoutY="46.0" onAction="#changeScene" prefHeight="47.0" prefWidth="255.0" style="-fx-background-color: #8DC248;" text="Notifications">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/notifications.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Montserrat SemiBold" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton fx:id="teacherClasses" focusTraversable="false" graphicTextGap="10.0" layoutY="92.0" onAction="#changeScene" prefHeight="47.0" prefWidth="255.0" style="-fx-background-color: #8DC248;" text="Classes">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/mdi_bookshelf.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Montserrat SemiBold" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="-35.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton fx:id="teacherResults" focusTraversable="false" graphicTextGap="10.0" layoutY="139.0" onAction="#changeScene" prefHeight="47.0" prefWidth="255.0" style="-fx-background-color: #8DC248;" text="Results">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/union.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Montserrat SemiBold" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="-39.0" />
+                     </padding>
+                  </JFXButton>
+                  <JFXButton fx:id="teacherLogout" focusTraversable="false" graphicTextGap="15.0" layoutY="186.0" onAction="#changeScene" prefHeight="47.0" prefWidth="255.0" style="-fx-background-color: #8DC248;" text="Logout">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/signout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Montserrat SemiBold" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="-30.0" />
+                     </padding>
+                  </JFXButton>
+               </children>
+            </Group>
+         </children>
+      </VBox>
+      <Label layoutX="291.0" layoutY="95.0" prefHeight="37.0" prefWidth="185.0" text="Current Classes">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="288.0" layoutY="296.0" prefHeight="37.0" prefWidth="226.0" text="Upcoming Events">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <VBox fx:id="teacherDashboardEventsContainer" alignment="TOP_CENTER" layoutX="290.0" layoutY="339.0" opacity="0.7" prefHeight="135.0" prefWidth="682.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
+         <padding>
+            <Insets left="50.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox fx:id="teacherDashboardClassesContainer" alignment="TOP_CENTER" layoutX="288.0" layoutY="131.0" opacity="0.7" prefHeight="165.0" prefWidth="324.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
+         <padding>
+            <Insets left="20.0" top="5.0" />
+         </padding>
+      </VBox>
+      <JFXButton alignment="CENTER" focusTraversable="false" layoutX="641.0" layoutY="187.0" prefHeight="54.0" prefWidth="324.0" style="-fx-background-color: #8DC248; -fx-background-radius: 20px;" text="Lectures &amp; Assignments">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

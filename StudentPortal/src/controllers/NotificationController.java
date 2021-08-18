@@ -82,18 +82,19 @@ public class NotificationController implements Initializable {
         }
     }
 
-    ArrayList<String> arrFrom = new ArrayList<>();
-    ArrayList<String> arrMessage = new ArrayList<>();
-    ArrayList<String> arrDate = new ArrayList<>();
+    public ArrayList<String> arrFrom = new ArrayList<>();
+    public ArrayList<String> arrMessage = new ArrayList<>();
+    public ArrayList<String> arrDate = new ArrayList<>();
 
-    public void notificationGen() {
-        Node[] node = new Node[9];
-        for (int i = 0; i < node.length; i++) {
+    public void notificationGen(TextArea textBox, VBox vbox) {
+        for (int i = 0; i < 9; i++) {
             try {
                 HBox h = new HBox();
                 h.setPrefWidth(337);
 
-                Label l = new Label(arrMessage.get(i));
+                String msg = arrMessage.get(i).substring(0, 5) + "...";
+
+                Label l = new Label(msg);
                 l.getStylesheets().add("/StudentPortal/src/css/styles.css");
                 l.getStyleClass().add("notification-label");
 
@@ -108,7 +109,7 @@ public class NotificationController implements Initializable {
                 a.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        stdNotificationTextBox.setText(
+                        textBox.setText(
                                 "From: " + arrFrom.get(j) + "\n" + "Date: " + arrDate.get(j).replace(".000000", "")
                                         + "\n\n" + "Message: " + "\n" + arrMessage.get(j));
                     }
@@ -116,7 +117,7 @@ public class NotificationController implements Initializable {
 
                 h.getChildren().add(a);
 
-                stdNotificationBtnHolder.getChildren().add(h);
+                vbox.getChildren().add(h);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -124,7 +125,7 @@ public class NotificationController implements Initializable {
         }
     }
 
-    private void getNotications() {
+    public void getNotications() {
         try {
             Connection connectDB = null;
             PreparedStatement prepStatDB;
@@ -150,7 +151,7 @@ public class NotificationController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         getNotications();
-        notificationGen();
+        notificationGen(stdNotificationTextBox, stdNotificationBtnHolder);
     }
 
 }
