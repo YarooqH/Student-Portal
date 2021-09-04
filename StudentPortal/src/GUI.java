@@ -14,6 +14,10 @@ public class GUI extends Application {
         parentStage.setTitle("UBIT Student Portal");
 
         parentStage.getIcons().add(new Image("/StudentPortal/src/icons/icon.png"));
+        parentStage.maximizedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue)
+                parentStage.setMaximized(false);
+        });
 
         Scene scene = new Scene(root);
 

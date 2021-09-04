@@ -32,7 +32,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <JFXButton fx:id="adminEventSendBtn" layoutX="253.0" layoutY="180.0" onAction="#sendEvent" prefHeight="32.0" prefWidth="101.0" style="-fx-background-color: #8DC248;" text="Send">
+      <JFXButton fx:id="adminEventSendBtn" layoutX="253.0" layoutY="228.0" onAction="#sendEvent" prefHeight="32.0" prefWidth="101.0" style="-fx-background-color: #8DC248;" text="Send">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -40,7 +40,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <Label fx:id="adminEventStatus" alignment="TOP_CENTER" layoutX="62.0" layoutY="214.0" prefHeight="61.0" prefWidth="495.0" wrapText="true">
+      <Label fx:id="adminEventStatus" alignment="TOP_CENTER" layoutX="62.0" layoutY="167.0" prefHeight="61.0" prefWidth="495.0" wrapText="true">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

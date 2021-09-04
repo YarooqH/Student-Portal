@@ -97,7 +97,9 @@ public class TeacherNotificationController implements Initializable {
                 HBox h = new HBox();
                 h.setPrefWidth(337);
 
-                Label l = new Label(arrMessage.get(i));
+                String msg = arrMessage.get(i).substring(0, 5) + "...";
+
+                Label l = new Label(msg);
                 l.getStylesheets().add("/StudentPortal/src/css/styles.css");
                 l.getStyleClass().add("notification-label");
 

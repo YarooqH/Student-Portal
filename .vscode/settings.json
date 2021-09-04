@@ -14,6 +14,8 @@
         "d:\\JavaFX\\UCanAccess-5.0.1.bin\\lib\\commons-logging-1.2.jar",
         "d:\\JavaFX\\UCanAccess-5.0.1.bin\\lib\\hsqldb-2.5.0.jar",
         "d:\\JavaFX\\UCanAccess-5.0.1.bin\\lib\\jackcess-3.0.1.jar",
-        "d:\\JavaFX\\UCanAccess-5.0.1.bin\\lib\\ucanaccess-5.0.1.jar"
+        "d:\\JavaFX\\UCanAccess-5.0.1.bin\\lib\\ucanaccess-5.0.1.jar",
+        "d:\\JavaFX\\mail\\activation-1.1.1.jar",
+        "d:\\JavaFX\\mail\\javax.mail.jar"
     ]
 }

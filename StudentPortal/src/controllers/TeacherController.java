@@ -112,6 +112,12 @@ public class TeacherController implements Initializable {
     @FXML
     private Label fileAddress;
 
+    // About
+    @FXML
+    private JFXButton aboutBtn;
+
+    AdminController ac = new AdminController();
+
     @FXML
     private void changeScene(ActionEvent event) {
         if (event.getSource() == teacherDashboard) {
@@ -124,6 +130,8 @@ public class TeacherController implements Initializable {
             loadStage("/StudentPortal/src/fxml/Teacher-Results.fxml", event);
         } else if (event.getSource() == teacherLogout) {
             loadStage("/StudentPortal/src/fxml/Login-Signup.fxml", event);
+        } else if (event.getSource() == aboutBtn) {
+            ac.loadWindow("/StudentPortal/src/fxml/Teacher-About.fxml");
         }
     }
 
@@ -142,7 +150,7 @@ public class TeacherController implements Initializable {
     }
 
     static String teacherEmail;
-    Teacher teacherObj;
+    static Teacher teacherObj;
     ArrayList<String> teacher = new ArrayList<>();
 
     public static void getTeacherEmail(String email) {
@@ -178,6 +186,9 @@ public class TeacherController implements Initializable {
     public void makeTeacherObject() {
         String name = teacher.get(0) + " " + teacher.get(1);
 
+        System.out.println(teacher.get(2) + teacher.get(3) + teacher.get(5) + "CNIC:" + teacher.get(6) + teacher.get(4)
+                + teacher.get(7));
+
         teacherObj = new Teacher(name, teacher.get(2), teacher.get(3), teacher.get(5), teacher.get(6), teacher.get(4),
                 teacher.get(7));
     }
@@ -197,9 +208,11 @@ public class TeacherController implements Initializable {
         }
     }
 
+    static public ArrayList<String> courses;
+
     private void addCourses() {
         makeTeacherObject();
-        ArrayList<String> courses = teacherObj.getMyCoursesArr();
+        courses = teacherObj.getMyCoursesArr();
         for (String string : courses) {
             System.out.println(string);
         }

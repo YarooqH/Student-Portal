@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentPortal.src.controllers.StudentAboutController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="TOP" prefHeight="156.0" prefWidth="500.0" text="Account Details">
+         <graphic>
+            <ImageView fitHeight="68.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/Student.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <VBox alignment="TOP_CENTER" layoutX="-1.0" layoutY="159.0" maxHeight="1200.0" prefHeight="446.0" prefWidth="500.0" spacing="20.0" style="-fx-background-color: #d4ecb4;">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="482.0" spacing="15.0">
+               <children>
+                  <Label text="Account Type:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Student Account">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="30.0" top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="20.0" prefHeight="27.0" prefWidth="482.0" spacing="15.0">
+               <children>
+                  <Label text="Name:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="stdNameLbl" text="Student Name">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="57.0" prefHeight="27.0" prefWidth="482.0" spacing="15.0">
+               <children>
+                  <Label text="Email Address:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="stdEmailLbl" text="Student Email Address">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="94.0" prefHeight="27.0" prefWidth="482.0" spacing="15.0">
+               <children>
+                  <Label text="Seat Number:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="stdSeatNumberLbl" text="Student Seat Number">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="131.0" prefHeight="27.0" prefWidth="482.0" spacing="15.0">
+               <children>
+                  <Label text="CNIC:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="stdCNICLbl" text="Student CNIC">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="168.0" prefHeight="27.0" prefWidth="482.0" spacing="15.0">
+               <children>
+                  <Label text="Batch:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="stdBatchLbl" text="Student Batch">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="273.0" prefHeight="27.0" prefWidth="482.0" spacing="15.0">
+               <children>
+                  <Label text="Semester:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="stdSemesterLbl" text="Student Semester">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

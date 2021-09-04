@@ -233,7 +233,7 @@ public class AdminController implements Initializable {
 
             connectDB = DriverManager.getConnection("jdbc:ucanaccess://StudentPortal/src/database/Events.accdb");
 
-            String SQL = "INSERT INTO Events(Event, Date_Time) values (?, ?)";
+            String SQL = "INSERT INTO Events(Message, Date_Time) values (?, ?)";
 
             prepStatDB = connectDB.prepareStatement(SQL);
 

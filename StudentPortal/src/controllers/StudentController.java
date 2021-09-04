@@ -6,6 +6,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.mail.MessagingException;
+
 import javafx.event.ActionEvent;
 import java.awt.Desktop;
 import javafx.event.EventHandler;
@@ -28,6 +30,7 @@ import javafx.util.Callback;
 import com.jfoenix.controls.JFXButton;
 
 import StudentPortal.src.model.Student;
+import StudentPortal.src.model.Mail;
 
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -69,6 +72,14 @@ public class StudentController implements Initializable {
     @FXML
     private JFXButton lectureBtn;
 
+    // About
+
+    @FXML
+    private JFXButton aboutBtn;
+
+    @FXML
+    private Label stdUserNameLbl;
+
     AdminController ac = new AdminController();
 
     @FXML
@@ -87,6 +98,10 @@ public class StudentController implements Initializable {
             openSchedule();
         } else if (event.getSource() == lectureBtn) {
             ac.loadWindow("/StudentPortal/src/fxml/Student-Lectures.fxml");
+        } else if (event.getSource() == aboutBtn) {
+            ac.loadWindow("/StudentPortal/src/fxml/Student-About.fxml");
+            // Mail.send("ubit.studentportal@gmail.com", "ubit123456", "yarooq1@gmail.com",
+            // "Whats up?", "Henlo Dear sir");
         }
     }
 

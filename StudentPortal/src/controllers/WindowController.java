@@ -16,6 +16,7 @@ import javafx.scene.control.TableView;
 import javafx.util.Callback;
 
 import StudentPortal.src.controllers.AdminController;
+import StudentPortal.src.model.Mail;
 
 public class WindowController implements Initializable {
     @FXML
@@ -108,6 +109,9 @@ public class WindowController implements Initializable {
                 i++;
             }
 
+            Mail.send("ubit.studentportal@gmail.com", "ubit123456", userData[2], "Account Accepted",
+                    "Your UBIT Student Portal Student Account has been Verified. \n\nYou can now log in into your UBIT Student Portal Account.");
+
             query = "DELETE FROM `" + DBTableName + "` WHERE Email_Address = " + "'" + userData[2] + "'";
 
             WindowController(fileLocation);
@@ -161,6 +165,9 @@ public class WindowController implements Initializable {
                 System.out.println(string);
             }
 
+            Mail.send("ubit.studentportal@gmail.com", "ubit123456", userData[2], "Account Accepted",
+                    "Your UBIT Student Portal Teacher Account has been Verified. \n\nYou can now log in into your UBIT Student Portal Account.");
+
             query = "DELETE FROM `" + DBTableName + "` WHERE Email_Address = " + "'" + userData[2] + "'";
 
             WindowController(fileLocation);
@@ -202,7 +209,11 @@ public class WindowController implements Initializable {
                 userData[i] = string.strip();
                 i++;
             }
+
+            Mail.send("ubit.studentportal@gmail.com", "ubit123456", userData[2], "Account Request Declined",
+                    "Your UBIT Student Portal Account request has been declined.\n\nThis is due to incorrect information used in the required fields.\nKindly register again with correct details.");
             String email = userData[2];
+
             query = "DELETE FROM `" + DBTableName + "` WHERE Email_Address = " + "'" + email + "'";
             System.out.println(query);
 

@@ -13,6 +13,7 @@ public class Teacher extends Person {
         super(name, "Teacher", CNIC, emailAddress);
         this.password = password;
         this.role = role;
+        this.CNIC = CNIC;
 
         String[] semesterStringArr = semesters.strip().split(",");
 
