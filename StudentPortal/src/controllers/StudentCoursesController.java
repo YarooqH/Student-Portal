@@ -60,6 +60,11 @@ public class StudentCoursesController implements Initializable {
     @FXML
     private TableView stdCoursesTable;
 
+    // username
+
+    @FXML
+    private Label stdUserNameLbl;
+
     StudentController sc = new StudentController();
 
     @FXML
@@ -151,6 +156,7 @@ public class StudentCoursesController implements Initializable {
         // wc.WindowController("jdbc:ucanaccess://StudentPortal/src/database/MainDB.accdb");
         fetCol();
         fetRow();
+        stdUserNameLbl.setText(StudentController.studentName);
     }
 
 }

@@ -56,6 +56,9 @@ public class StudentGradesController implements Initializable {
     @FXML
     private JFXButton semesterSchedule;
 
+    @FXML
+    private Label stdUserNameLbl;
+
     AdminController ac = new AdminController();
 
     @FXML
@@ -209,6 +212,7 @@ public class StudentGradesController implements Initializable {
         getRowCount();
         getGrades();
         buttonsGen();
+        stdUserNameLbl.setText(StudentController.studentName);
     }
 
 }

@@ -14,7 +14,7 @@ public class Student extends Person {
     /** Variable Attributes */
     public int totalCourses;
     public int Semester;
-    public Marksheet semesterMarksheet;
+    // public Marksheet semesterMarksheet;
     // public Marksheet commulativeMarksheet;
 
     /** Class Constructor */
@@ -70,14 +70,6 @@ public class Student extends Person {
 
     public void setSemester(int Semester) {
         this.Semester = Semester;
-    }
-
-    public Marksheet getSemesterMarksheet() {
-        return this.semesterMarksheet;
-    }
-
-    public void setSemesterMarksheet(Marksheet semesterMarksheet) {
-        this.semesterMarksheet = semesterMarksheet;
     }
 
 }

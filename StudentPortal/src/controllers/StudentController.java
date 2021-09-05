@@ -101,7 +101,7 @@ public class StudentController implements Initializable {
         } else if (event.getSource() == aboutBtn) {
             ac.loadWindow("/StudentPortal/src/fxml/Student-About.fxml");
             // Mail.send("ubit.studentportal@gmail.com", "ubit123456", "yarooq1@gmail.com",
-            // "Whats up?", "Henlo Dear sir");
+            // "Whats up?", "Hello Dear sir");
         }
     }
 
@@ -123,6 +123,7 @@ public class StudentController implements Initializable {
 
     static String studentEmail;
     static Student studentObj;
+    static String studentName;
     ArrayList<String> student = new ArrayList<>();
 
     public static void getStudentEmail(String stdEmail) {
@@ -156,6 +157,8 @@ public class StudentController implements Initializable {
 
     public void makeStudentObject() {
         String name = student.get(0) + " " + student.get(1);
+
+        studentName = name;
 
         studentObj = new Student(name, student.get(2), student.get(3), student.get(4), student.get(5), student.get(6),
                 Integer.parseInt(student.get(7)));
@@ -281,6 +284,7 @@ public class StudentController implements Initializable {
         getCourses();
         eventGen();
         coursesGen();
+        stdUserNameLbl.setText(studentName);
     }
 
 }

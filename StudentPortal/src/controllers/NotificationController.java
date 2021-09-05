@@ -54,6 +54,9 @@ public class NotificationController implements Initializable {
     private TextArea stdNotificationTextBox;
 
     @FXML
+    private Label stdUserNameLbl;
+
+    @FXML
     private void changeScene(ActionEvent event) {
         if (event.getSource() == stdDashboard) {
             loadStage("/StudentPortal/src/fxml/Student-Dashboard.fxml", event);
@@ -152,6 +155,7 @@ public class NotificationController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         getNotications();
         notificationGen(stdNotificationTextBox, stdNotificationBtnHolder);
+        stdUserNameLbl.setText(StudentController.studentName);
     }
 
 }

@@ -58,6 +58,11 @@ public class TeacherNotificationController implements Initializable {
     @FXML
     public TextArea teacherNotificationTextBox;
 
+    // username
+
+    @FXML
+    private Label teacherUserNameLbl;
+
     @FXML
     private void changeScene(ActionEvent event) {
         if (event.getSource() == teacherDashboard) {
@@ -157,6 +162,7 @@ public class TeacherNotificationController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         getNotications();
         notificationGen(teacherNotificationTextBox);
+        teacherUserNameLbl.setText(TeacherController.teacherName);
     }
 
 }

@@ -6,10 +6,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,14 +15,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import com.jfoenix.controls.JFXButton;
+
+import StudentPortal.src.model.Admin;
 
 public class AdminController implements Initializable {
     @FXML
@@ -145,6 +140,10 @@ public class AdminController implements Initializable {
         } else if (event.getSource() == adminViewCourses) {
             loadWindow("/StudentPortal/src/fxml/Admin-Courses-Window.fxml");
         }
+    }
+
+    private void makeAdminObject() {
+        Admin admin = new Admin("AdminUBIT", "42101-4642266-5", "ubit.studentportal@gmail.com");
     }
 
     @FXML
@@ -284,7 +283,7 @@ public class AdminController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
+        makeAdminObject();
     }
 
 }

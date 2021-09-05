@@ -113,8 +113,14 @@ public class TeacherController implements Initializable {
     private Label fileAddress;
 
     // About
+
     @FXML
     private JFXButton aboutBtn;
+
+    // UserName
+
+    @FXML
+    private Label teacherUserNameLbl;
 
     AdminController ac = new AdminController();
 
@@ -151,6 +157,7 @@ public class TeacherController implements Initializable {
 
     static String teacherEmail;
     static Teacher teacherObj;
+    static String teacherName;
     ArrayList<String> teacher = new ArrayList<>();
 
     public static void getTeacherEmail(String email) {
@@ -185,6 +192,8 @@ public class TeacherController implements Initializable {
 
     public void makeTeacherObject() {
         String name = teacher.get(0) + " " + teacher.get(1);
+
+        teacherName = name;
 
         System.out.println(teacher.get(2) + teacher.get(3) + teacher.get(5) + "CNIC:" + teacher.get(6) + teacher.get(4)
                 + teacher.get(7));
@@ -503,6 +512,7 @@ public class TeacherController implements Initializable {
         addCourses();
         eventGen();
         notificationGen(teacherNotificationTextBox);
+        teacherUserNameLbl.setText(teacherName);
     }
 
 }
