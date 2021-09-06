@@ -61,19 +61,55 @@ public class AdminTeacherController implements Initializable {
         } else if (event.getSource() == adminApprovals) {
             ac.loadWindow("/StudentPortal/src/fxml/Admin-Table-Window.fxml");
         } else if (event.getSource() == adminStudents) {
-            ac.loadStage("/StudentPortal/src/fxml/Admin-Students.fxml", event);
+            ac.loadStage("/StudentPortal/src/fxml/Admin-Students-New.fxml", event);
         } else if (event.getSource() == adminTeachers) {
-            ac.loadStage("/StudentPortal/src/fxml/Admin-Teachers.fxml", event);
-
-            // connectorDB("jdbc:ucanaccess://StudentPortal/src/database/MainDB.accdb");
-            // wc.fetCol(adminTeacherTable, "SELECT * FROM Teachers");
-            // wc.fetRow(adminTeacherTable, "SELECT * FROM Teachers");
+            ac.loadStage("/StudentPortal/src/fxml/Admin-Teachers-New.fxml", event);
         } else if (event.getSource() == adminLogout) {
             ac.loadStage("/StudentPortal/src/fxml/Login-Signup.fxml", event);
         } else if (event.getSource() == adminNotificationsAdd) {
             ac.loadWindow("/StudentPortal/src/fxml/Admin-Notifications-Window.fxml");
         } else if (event.getSource() == adminEventsAdd) {
             ac.loadWindow("/StudentPortal/src/fxml/Admin-Events-Window.fxml");
+        }
+    }
+
+    Object queryId;
+    String query;
+    String[] userData;
+
+    @FXML
+    private void deleteAccount(ActionEvent event) {
+        try {
+            queryId = (adminTeacherTable.getSelectionModel().getSelectedItem());
+            userData = queryId.toString().split(",");
+            int i = 0;
+            for (String string : userData) {
+                userData[i] = string.strip();
+                if (string.contains("[")) {
+                    userData[i] = string.replace("[", "");
+                } else if (string.contains("]")) {
+                    string = string.replace("]", "");
+                    userData[i] = string.strip();
+                }
+                i++;
+            }
+
+            query = "DELETE FROM Teachers WHERE Email_Address = " + "'" + userData[2] + "'";
+            try {
+                Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+                connectDB = DriverManager.getConnection("jdbc:ucanaccess://StudentPortal/src/database/MainDB.accdb");
+            } catch (Exception e) {
+                System.out.println("Error: " + e);
+            }
+
+            prepStatDB = connectDB.prepareStatement(query);
+            prepStatDB.executeUpdate();
+
+            AdminController ad = new AdminController();
+            ad.loadStage("/StudentPortal/src/fxml/Admin-Teachers-New.fxml", event);
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
         }
     }
 

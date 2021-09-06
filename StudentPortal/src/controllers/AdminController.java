@@ -126,9 +126,9 @@ public class AdminController implements Initializable {
         } else if (event.getSource() == adminApprovals) {
             loadWindow("/StudentPortal/src/fxml/Admin-Table-Window.fxml");
         } else if (event.getSource() == adminStudents) {
-            loadStage("/StudentPortal/src/fxml/Admin-Students.fxml", event);
+            loadStage("/StudentPortal/src/fxml/Admin-Students-New.fxml", event);
         } else if (event.getSource() == adminTeachers) {
-            loadStage("/StudentPortal/src/fxml/Admin-Teachers.fxml", event);
+            loadStage("/StudentPortal/src/fxml/Admin-Teachers-New.fxml", event);
         } else if (event.getSource() == adminLogout) {
             loadStage("/StudentPortal/src/fxml/Login-Signup.fxml", event);
         } else if (event.getSource() == adminNotificationsAdd) {
@@ -138,7 +138,7 @@ public class AdminController implements Initializable {
         } else if (event.getSource() == adminFeeAdd) {
             loadWindow("/StudentPortal/src/fxml/Admin-Fee-Window.fxml");
         } else if (event.getSource() == adminViewCourses) {
-            loadWindow("/StudentPortal/src/fxml/Admin-Courses-Window.fxml");
+            loadWindow("/StudentPortal/src/fxml/Admin-Courses-Window-New.fxml");
         }
     }
 

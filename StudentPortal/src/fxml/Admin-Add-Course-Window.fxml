@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentPortal.src.controllers.AdminNewCourseController">
+   <children>
+      <ImageView fitHeight="361.0" fitWidth="711.0" layoutX="-4.0" layoutY="59.0" pickOnBounds="true">
+         <image>
+            <Image url="@../icons/lightgreenbkg.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="203.0" layoutY="14.0" prefHeight="53.0" prefWidth="297.0" text="Add Course">
+         <font>
+            <Font name="Montserrat SemiBold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="93.0" prefHeight="32.0" prefWidth="181.0" text="Add New Course">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="284.0" layoutY="324.0" onAction="#addCourse" prefHeight="32.0" prefWidth="135.0" style="-fx-background-color: #8DC248;" text="Add Course">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label fx:id="newCourseStatus" alignment="TOP_CENTER" layoutX="62.0" layoutY="278.0" prefHeight="40.0" prefWidth="578.0" wrapText="true">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="newCourseNumber" layoutX="62.0" layoutY="125.0" prefHeight="32.0" prefWidth="269.0" promptText="Enter Course Number" />
+      <TextField fx:id="newCourseName" layoutX="366.0" layoutY="125.0" prefHeight="32.0" prefWidth="269.0" promptText="Enter Course Name" />
+      <TextField fx:id="newTeacherName" layoutX="62.0" layoutY="180.0" prefHeight="32.0" prefWidth="269.0" promptText="Enter Teacher Name" />
+      <TextField fx:id="newCourseCreditHours" layoutX="366.0" layoutY="180.0" prefHeight="32.0" prefWidth="269.0" promptText="Enter Credit Hours (e.g: 2 + 1, 3 + 0)" />
+      <ComboBox fx:id="newCourseSemesterNum" layoutX="276.0" layoutY="246.0" prefWidth="150.0" promptText="Semester #" />
+   </children>
+</AnchorPane>

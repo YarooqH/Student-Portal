@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="897.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentPortal.src.controllers.AdminCoursesController">
+   <children>
+      <TabPane prefHeight="423.0" prefWidth="897.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Semester 3">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="757.0">
+                     <children>
+                        <TableView fx:id="semester3Table" prefHeight="397.0" prefWidth="897.0">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Semester 4">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="484.0" prefWidth="757.0">
+                     <children>
+                        <TableView fx:id="semester4Table" prefHeight="394.0" prefWidth="897.0">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+      <JFXButton contentDisplay="TOP" layoutX="410.0" layoutY="429.0" onAction="#openAddCourseWindow" text="Add Course">
+         <graphic>
+            <ImageView fitHeight="55.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/Add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>
